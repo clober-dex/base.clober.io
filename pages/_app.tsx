@@ -35,6 +35,7 @@ import { VaultContractProvider } from '../contexts/vault/vault-contract-context'
 import { FuturesProvider } from '../contexts/futures/futures-context'
 import { FuturesContractProvider } from '../contexts/futures/futures-contract-context'
 import { GOOGLE_ANALYTICS_TRACKING_ID } from '../constants/google-analytics'
+import Modal from '../components/modal/modal'
 
 const CacheProvider = ({ children }: React.PropsWithChildren) => {
   const queryClient = useQueryClient()
@@ -135,6 +136,7 @@ const FooterWrapper = () => {
 }
 
 function App({ Component, pageProps }: AppProps) {
+  const [showDeprecatedWarning, setShowDeprecatedWarning] = useState(true)
   const [open, setOpen] = useState(false)
   const [history, setHistory] = useState<string[]>([])
   const router = useRouter()
@@ -230,7 +232,6 @@ function App({ Component, pageProps }: AppProps) {
 
     const handleRouteChange = (url: string) => {
       const [pathname, search] = url.split('?')
-      // 중복 호출 방지: 현재 pathname과 같은 경우 skip
       if (pathname === initialPathname && !search) {
         return
       }
@@ -279,6 +280,18 @@ function App({ Component, pageProps }: AppProps) {
                 >
                   <PanelWrapper open={open} setOpen={setOpen} />
                   <HeaderContainer onMenuClick={() => setOpen(true)} />
+                  {showDeprecatedWarning && (
+                    <Modal
+                      show
+                      onClose={() => {}}
+                      onButtonClick={() => setShowDeprecatedWarning(false)}
+                    >
+                      <h1 className="flex font-bold text-xl mb-2">Notice</h1>
+                      <div className="text-sm">
+                        base.clober.io will be deprecated soon.
+                      </div>
+                    </Modal>
+                  )}
 
                   {router.pathname.includes('/trade') ? (
                     <TradeProvidersWrapper>
