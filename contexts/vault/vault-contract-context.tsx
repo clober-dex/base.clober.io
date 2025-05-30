@@ -25,6 +25,7 @@ import { toPlacesAmountString } from '../../utils/bignumber'
 import { sendTransaction } from '../../utils/transaction'
 import { RPC_URL } from '../../constants/rpc-url'
 import { currentTimestampInSeconds } from '../../utils/date'
+import { applyPercent } from '../../utils/bigint'
 
 type VaultContractContext = {
   mint: (
@@ -250,7 +251,7 @@ export const VaultContractProvider = ({
           const transactionReceipt = await sendTransaction(
             selectedChain,
             walletClient,
-            transaction,
+            { ...transaction, gas: applyPercent(transaction.gas, 150) },
             disconnectAsync,
           )
           if (transactionReceipt) {
