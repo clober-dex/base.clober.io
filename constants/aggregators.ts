@@ -19,7 +19,7 @@ export const AGGREGATORS: {
     //   findSupportChain(CHAIN_IDS.BASE.valueOf())!,
     // ),
     new MagpieAggregator(
-      getAddress('0xef42f78d25f4c681dcad2597fa04877ff802ef4b'),
+      getAddress('0x5E766616AaBFB588E23a8EA854e9dbd1042afFD3'),
       base,
     ),
   ],
