@@ -14,7 +14,7 @@ export class MagpieAggregator implements Aggregator {
   public readonly baseUrl = 'https://api.magpiefi.xyz'
   public readonly contract: `0x${string}`
   public readonly chain: Chain
-  private readonly TIMEOUT = 2000
+  private readonly TIMEOUT = 5000
   private readonly nativeTokenAddress = zeroAddress
   private chainName: string
 
