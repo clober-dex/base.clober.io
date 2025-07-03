@@ -208,10 +208,9 @@ export async function fetchOnChainVault(
         _5minNormalizedCurrentTimestampInSeconds - 60 * 60 * 24,
       volumeToTimestamp: _5minNormalizedCurrentTimestampInSeconds,
       // performance chart
-      snapshotFromTimestamp:
-        _1hourNormalizedCurrentTimestampInSeconds - 60 * 60 * 24 * 90,
-      snapshotToTimestamp: _1hourNormalizedCurrentTimestampInSeconds,
-      snapshotIntervalType: CHART_LOG_INTERVALS.oneHour,
+      snapshotFromTimestamp: 0,
+      snapshotToTimestamp: 1749686400,
+      snapshotIntervalType: '4h' as any,
       // apy
       spreadProfitFromTimestamp:
         _5minNormalizedCurrentTimestampInSeconds - 60 * 60 * 24,
